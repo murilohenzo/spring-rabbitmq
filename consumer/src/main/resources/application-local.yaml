@@ -1,0 +1,38 @@
+## Configuração Local (Máquina do Desenvolvedor) ##
+server:
+    host: localhost
+    port: 9001
+
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5432/scheduling
+        username: postgres
+        password: postgres
+    jpa:
+        hibernate:
+            ddl-auto: create-drop
+        database: POSTGRESQL
+        show-sql: true
+        generate-ddl: true
+
+## LOGS
+logging:
+    level:
+        root: INFO
+        com.sample.feign.demofeigncustomconfig: INFO
+        org.springframework.web.client: INFO
+        org.springframework.security.oauth2: INFO
+
+## SCHEDULER
+scheduled:
+    time.zone: America/Sao_Paulo
+    cron.tab: 0/30 * * * * *
+
+## RABBIT
+rabbit:
+    queue: message_queue
+    server:
+        hostname: localhost
+        port: 5672
+        username: guest
+        password: guest
