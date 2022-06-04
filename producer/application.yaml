@@ -1,0 +1,22 @@
+## Configuração Local (Máquina do Desenvolvedor) ##
+server:
+  host: localhost
+  port: 9000
+
+## LOGS
+logging:
+  level:
+    root: INFO
+    com.sample.feign.demofeigncustomconfig: INFO
+    org.springframework.web.client: INFO
+    org.springframework.security.oauth2: INFO
+
+# RABBIT
+rabbit:
+  hostname: localhost
+  port: 5672
+  username: guest
+  password: guest
+  routing_key: routing_key
+  message_exchange: message_exchange
+  queue: message_queue

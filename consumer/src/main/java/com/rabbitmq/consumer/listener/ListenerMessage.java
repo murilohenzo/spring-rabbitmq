@@ -7,6 +7,7 @@ import com.rabbitmq.consumer.domain.StatusMessage;
 import com.rabbitmq.consumer.dtos.SchedulingMessageDto;
 import com.rabbitmq.consumer.mappers.MessageMapper;
 import com.rabbitmq.consumer.repository.SchedulingRepository;
+import com.rabbitmq.consumer.service.SchedulingService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
@@ -20,16 +21,13 @@ import java.util.Date;
 
 @Slf4j
 @Component
+@AllArgsConstructor
 public class ListenerMessage {
-    @Autowired
-    private SchedulingRepository schedulingRepository;
+    private final SchedulingService service;
 
     @RabbitListener(queues = "${rabbit.queue}")
     public void listener(String message) {
-        SchedulingMessage schedulingMessage = stringToObject(message);
-        schedulingMessage.setCreatedAt(new Date());
-        schedulingMessage.setStatus(StatusMessage.PENDING);
-        schedulingRepository.save(schedulingMessage);
+        service.create(stringToObject(message));
     }
 
     private SchedulingMessage stringToObject(String message) {

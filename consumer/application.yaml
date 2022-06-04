@@ -26,7 +26,7 @@ logging:
 ## SCHEDULER
 scheduled:
   time.zone: America/Sao_Paulo
-  cron.tab: 0/30 * * * * *
+  cron.tab: 0/50 * * * * *
 
 ## RABBIT
 rabbit:

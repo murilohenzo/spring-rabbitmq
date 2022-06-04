@@ -17,10 +17,11 @@ public class SchedulingMessage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = false)
+    @Column(nullable = false)
     private String message;
 
-    @Column(nullable = false, unique = false)
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private StatusMessage status;
 
     @Column

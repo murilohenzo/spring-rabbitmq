@@ -1,4 +1,4 @@
-package com.rabbitmq.producer;
+package com.rabbitmq.producer.domain;
 
 import lombok.*;
 @Getter
